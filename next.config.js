@@ -1,5 +1,11 @@
+const nextPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+});
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = nextPWA({
   compiler: {
     styledComponents: true,
     removeConsole:
@@ -8,6 +14,6 @@ const nextConfig = {
         : { exclude: ["error"] },
   },
   reactStrictMode: false,
-};
+});
 
 module.exports = nextConfig;
