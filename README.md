@@ -32,3 +32,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+[PWA Ref] (https://levelup.gitconnected.com/turn-your-next-js-app-into-a-progressive-web-app-pwa-cd6290330690)
+
+[Advantages of Progressive Web Apps](https://stackademic.com/blog/adding-pwa-to-next-js-with-app-directory-simple-guide)
+Benefits of PWA:
+
+1. Offline Access: Offline access is one of the biggest benefits as PWAs can work offline or in low-network conditions using service workers to cache essential assets and data.
+2. App-Like: PWAs are built to mimic native app interactions, making the user experience feel fluid and intuitive.
+3. Push Notifications: Just like native apps, PWAs can send push notifications to the end users.
+4. Discoverable: PWAs can be discovered by search engines, which is a significant advantage over native applications as inherently PWAs are web apps.
+5. Installable: Users can “install” a PWA on their device’s home screen without going through an app store, which makes the distribution more direct.
+6. Automatic Updates: PWAs update automatically when the user accesses them, ensuring that users always see the latest version without needing to go through an app store update process.

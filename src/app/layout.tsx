@@ -17,6 +17,8 @@ import { redirect, useRouter } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  // manifest: "./manifest.webmanifest",
+  manifest: "./manifest",
   title: "Timesheet App",
   description: "Track your daily timesheet entries",
 };
