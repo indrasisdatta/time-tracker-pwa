@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   manifest: "./manifest",
   title: "Timesheet App",
   description: "Track your daily timesheet entries",
+  themeColor: "#1f2937",
 };
 
 export default function RootLayout({
