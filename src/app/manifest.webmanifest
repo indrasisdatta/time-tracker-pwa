@@ -1,7 +1,19 @@
 {
-  "name": "Time Tracker App",
-  "short_name": "Time Tracker App",
+  "name": "Time Tracker",
+  "short_name": "Time Tracker",
   "icons": [
+    {
+      "src": "/images/icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/images/icon-96x96.png",
       "sizes": "96x96",

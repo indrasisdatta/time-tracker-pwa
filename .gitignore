@@ -34,5 +34,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/public
+# Ignore all files in public folder except /images
+/public/*
 !/public/images
