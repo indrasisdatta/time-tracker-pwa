@@ -2,6 +2,9 @@ const nextPWA = require("next-pwa")({
   dest: "public",
   register: true,
   skipWaiting: true,
+  fallbacks: {
+    document: "/offline",
+  },
 });
 
 /** @type {import('next').NextConfig} */
