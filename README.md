@@ -15,7 +15,7 @@ npm run build
 npm run start
 ```
 
-[PWA Ref] (https://levelup.gitconnected.com/turn-your-next-js-app-into-a-progressive-web-app-pwa-cd6290330690)
+[PWA Ref](https://levelup.gitconnected.com/turn-your-next-js-app-into-a-progressive-web-app-pwa-cd6290330690)
 
 [Advantages of Progressive Web Apps](https://stackademic.com/blog/adding-pwa-to-next-js-with-app-directory-simple-guide)
 ## Benefits of PWA:
