@@ -54,9 +54,9 @@ Benefits of PWA:
 3. Create `src/app/manifest.webmanifest` and mention app name, icons, start url, theme color etc.
 4. Add manifest in metadata `app/layout.tsx`.
    `export const metadata: Metadata = {
-     manifest: "./manifest",
-     title: "PWA App",
- };`
+    manifest: "./manifest",
+    title: "PWA App",
+};`
 5. In `next.config.js` import next-pwa and initialize. Add to nextConfig.
    `const nextPWA = require("next-pwa")({
     dest: "public",
@@ -64,3 +64,5 @@ Benefits of PWA:
     skipWaiting: true,
 });`
    `const nextConfig = nextPWA({...other opts...})`
+
+[Implementing Firebase push notifications in Next.js](https://www.mbloging.com/post/implementing-firebase-push-notifications-in-next-js-a-step-by-step-guide)
