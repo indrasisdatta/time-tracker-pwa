@@ -66,3 +66,7 @@ Benefits of PWA:
    `const nextConfig = nextPWA({...other opts...})`
 
 [Implementing Firebase push notifications in Next.js](https://www.mbloging.com/post/implementing-firebase-push-notifications-in-next-js-a-step-by-step-guide)
+
+[Firebase React](https://medium.com/simform-engineering/firebase-cloud-messaging-in-react-a-comprehensive-guide-b5e325452f97)
+
+https://www.youtube.com/watch?v=9EAgvpWujsw
