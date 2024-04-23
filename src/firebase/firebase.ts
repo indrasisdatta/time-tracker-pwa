@@ -1,13 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging } from "firebase/messaging";
+import { getMessaging, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAfy_OiccP2cqZOKKpsyycZluR5y9CVvCU",
-  authDomain: "time-tracker-1ba48.firebaseapp.com",
-  projectId: "time-tracker-1ba48",
-  storageBucket: "time-tracker-1ba48.appspot.com",
-  messagingSenderId: "823639020155",
-  appId: "1:823639020155:web:0edc032869e0aa2d9988de",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MSG_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 // Initialize Firebase
@@ -15,3 +15,11 @@ const app = initializeApp(firebaseConfig);
 
 // Messaging service
 export const messaging = getMessaging(app);
+
+export const onMessageListener = () => {
+  return new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      resolve(payload);
+    });
+  });
+};

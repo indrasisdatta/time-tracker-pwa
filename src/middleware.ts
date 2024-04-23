@@ -27,6 +27,6 @@ export async function middleware(request: NextRequest) {
 /* Except auth urls (login, signup) and static assets, restrict all */
 export const config = {
   matcher: [
-    "/((?!auth|images|_next/static|_next/image|favicon.ico|manifest.webmanifest).*)",
+    "/((?!auth|images|_next/static|_next/image|favicon.ico|manifest.webmanifest|firebase-messaging-sw.js).*)",
   ],
 };

@@ -13,6 +13,7 @@ import { PageLoader } from "./common/components/PageLoader";
 import { AuthContextProvider } from "../context/AuthContext";
 // import { LoggedinUserData } from "@/utils/auth";
 import { redirect, useRouter } from "next/navigation";
+import NotificationInit from "./common/components/NotificationInit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
             </Suspense>
           </ThemeWrapper>
           <HealthChecker />
+          <NotificationInit />
         </AuthContextProvider>
       </body>
     </html>

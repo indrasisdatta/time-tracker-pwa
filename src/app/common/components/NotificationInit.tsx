@@ -1,15 +1,22 @@
 "use client";
-import { messaging } from "@/firebase/firebase";
+import { messaging, onMessageListener } from "@/firebase/firebase";
 import { getToken } from "firebase/messaging";
 import React, { useEffect } from "react";
 
 const NotificationInit = () => {
+  onMessageListener()
+    .then((payload) => {
+      console.log("On Message Payload: ", payload);
+    })
+    .catch((e) => {
+      console.error("On message error: ", e);
+    });
+
   async function requestPermission() {
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
       const token = await getToken(messaging, {
-        vapidKey:
-          "BAYbeTKgzkESkYkyeBJa5roHVAxjQ6RcSGW2HyRS4wif_TvC7kbHRnFmQYREScFStIZLqXAYhzB7mkxCq77QGaw",
+        vapidKey: process.env.NEXT_PUBLIC_VAPID_KEY,
       });
 
       //We can send token to server
