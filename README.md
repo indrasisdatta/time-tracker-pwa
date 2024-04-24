@@ -69,4 +69,6 @@ Benefits of PWA:
 
 [Firebase React](https://medium.com/simform-engineering/firebase-cloud-messaging-in-react-a-comprehensive-guide-b5e325452f97)
 
+[Firebase Testing Guide](https://apoorv487.medium.com/testing-fcm-push-notification-http-v1-through-oauth-2-0-playground-postman-terminal-part-2-7d7a6a0e2fa0)
+
 https://www.youtube.com/watch?v=9EAgvpWujsw

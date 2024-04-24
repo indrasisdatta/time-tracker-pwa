@@ -1,7 +1,10 @@
 "use client";
-import { messaging, onMessageListener } from "@/firebase/firebase";
-import { getToken } from "firebase/messaging";
-import React, { useEffect } from "react";
+import {
+  onMessageListener,
+  requestForToken,
+} from "@/app/common/firebase/firebase";
+import { isSupported } from "firebase/messaging";
+import { useEffect } from "react";
 
 const NotificationInit = () => {
   onMessageListener()
@@ -12,23 +15,15 @@ const NotificationInit = () => {
       console.error("On message error: ", e);
     });
 
-  async function requestPermission() {
-    const permission = await Notification.requestPermission();
-    if (permission === "granted") {
-      const token = await getToken(messaging, {
-        vapidKey: process.env.NEXT_PUBLIC_VAPID_KEY,
-      });
-
-      //We can send token to server
-      console.log("Token generated : ", token);
-    } else if (permission === "denied") {
-      //notifications are blocked
-      alert("You denied for the notification");
-    }
-  }
-
   useEffect(() => {
-    requestPermission();
+    (async () => {
+      const firebaseSupported = await isSupported();
+      console.log("firebaseSupported", firebaseSupported);
+      if (firebaseSupported) {
+        // const { requestForToken } = import("../firebase/firebase");
+        await requestForToken();
+      }
+    })();
   }, []);
 
   return null;

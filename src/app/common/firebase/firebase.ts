@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging, onMessage } from "firebase/messaging";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -22,4 +22,26 @@ export const onMessageListener = () => {
       resolve(payload);
     });
   });
+};
+
+const getFirebaseToken = async () => {
+  try {
+    const token = await getToken(messaging, {
+      vapidKey: process.env.NEXT_PUBLIC_VAPID_KEY,
+    });
+    console.log("Firebase token: ", token);
+  } catch (error) {
+    console.error("Token error: ", error);
+  }
+};
+
+export const requestForToken = async () => {
+  try {
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      await getFirebaseToken();
+    }
+  } catch (error) {
+    console.log("An error occurred while getting user permission. ", error);
+  }
 };
