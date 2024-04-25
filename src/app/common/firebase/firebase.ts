@@ -29,9 +29,19 @@ const getFirebaseToken = async () => {
     const token = await getToken(messaging, {
       vapidKey: process.env.NEXT_PUBLIC_VAPID_KEY,
     });
-    console.log("Firebase token: ", token);
-  } catch (error) {
-    console.error("Token error: ", error);
+    console.log("Firebase token 1: ", token);
+  } catch (error: any) {
+    const errorStr =
+      "AbortError: Failed to execute 'subscribe' on 'PushManager': Subscription failed - no active Service Worker";
+    if (error.toString() === errorStr) {
+      const token = await getToken(messaging, {
+        vapidKey: process.env.NEXT_PUBLIC_VAPID_KEY,
+      });
+      console.log("Firebase token 2: ", token);
+    } else {
+      console.error("Token error: ", error);
+      throw error;
+    }
   }
 };
 
