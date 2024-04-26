@@ -1,6 +1,6 @@
 // import { ThemeProvider } from "@/Provider/ThemeProvider";
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "./common/components/Header";
 // import { ThemeProvider } from "next-themes";
@@ -13,6 +13,7 @@ import { PageLoader } from "./common/components/PageLoader";
 import { AuthContextProvider } from "../context/AuthContext";
 // import { LoggedinUserData } from "@/utils/auth";
 import { redirect, useRouter } from "next/navigation";
+import NotificationInit from "./common/components/NotificationInit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,9 @@ export const metadata: Metadata = {
   manifest: "./manifest",
   title: "Timesheet App",
   description: "Track your daily timesheet entries",
+};
+
+export const viewport: Viewport = {
   themeColor: "#1f2937",
 };
 
@@ -41,6 +45,7 @@ export default function RootLayout({
             </Suspense>
           </ThemeWrapper>
           <HealthChecker />
+          <NotificationInit />
         </AuthContextProvider>
       </body>
     </html>

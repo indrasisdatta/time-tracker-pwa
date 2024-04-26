@@ -37,3 +37,4 @@ next-env.d.ts
 # Ignore all files in public folder except /images
 /public/*
 !/public/images
+certificates
