@@ -25,6 +25,7 @@ export const onMessageListener = () => {
 };
 
 const getFirebaseToken = async () => {
+  // console.log("Firebase vapid key", process.env.NEXT_PUBLIC_VAPID_KEY);
   try {
     const token = await getToken(messaging, {
       vapidKey: process.env.NEXT_PUBLIC_VAPID_KEY,
