@@ -9,8 +9,9 @@ import { useEffect } from "react";
 
 const NotificationInit = () => {
   onMessageListener()
-    .then((payload) => {
+    .then((payload: any) => {
       console.log("On Message Payload: ", payload);
+      alert(payload.data.title);
     })
     .catch((e) => {
       console.error("On message error: ", e);
@@ -18,7 +19,7 @@ const NotificationInit = () => {
 
   useEffect(() => {
     (async () => {
-      if (!isServer) {
+      if (!isServer()) {
         const firebaseSupported = await isSupported();
         console.log("firebaseSupported", firebaseSupported);
         if (firebaseSupported) {

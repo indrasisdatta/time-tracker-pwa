@@ -165,7 +165,8 @@ export const Header = () => {
                 </Link>
                 <div className="md:inline" ref={calDropdown}>
                   <Link
-                    href="javascript:void(0);"
+                    // href="javascript:void(0);"
+                    href={""}
                     id="dropdownCalButton"
                     onClick={() => setShowCalMenu((prevState) => !prevState)}
                     className={`block mt-2 text-lg md:text-sm md:mt-4 lg:inline-flex lg:mt-0 mr-4 ${activeLinkClass(
