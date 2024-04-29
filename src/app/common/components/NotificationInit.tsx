@@ -3,6 +3,7 @@ import {
   onMessageListener,
   requestForToken,
 } from "@/app/common/firebase/firebase";
+import { isServer } from "@/utils/helper";
 import { isSupported } from "firebase/messaging";
 import { useEffect } from "react";
 
@@ -17,11 +18,13 @@ const NotificationInit = () => {
 
   useEffect(() => {
     (async () => {
-      const firebaseSupported = await isSupported();
-      console.log("firebaseSupported", firebaseSupported);
-      if (firebaseSupported) {
-        // const { requestForToken } = import("../firebase/firebase");
-        await requestForToken();
+      if (!isServer) {
+        const firebaseSupported = await isSupported();
+        console.log("firebaseSupported", firebaseSupported);
+        if (firebaseSupported) {
+          // const { requestForToken } = import("@/app/common/firebase/firebase");
+          await requestForToken();
+        }
       }
     })();
   }, []);

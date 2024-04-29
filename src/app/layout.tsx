@@ -13,7 +13,17 @@ import { PageLoader } from "./common/components/PageLoader";
 import { AuthContextProvider } from "../context/AuthContext";
 // import { LoggedinUserData } from "@/utils/auth";
 import { redirect, useRouter } from "next/navigation";
-import NotificationInit from "./common/components/NotificationInit";
+import dynamic from "next/dynamic";
+// import NotificationInit from "./common/components/NotificationInit";
+
+const NotificationInitNoSSR = dynamic(
+  () =>
+    import("./common/components/NotificationInit").then((module: any) => {
+      console.log("Dynamic import notificationInit -->", module);
+      return module.default;
+    }),
+  { ssr: false }
+);
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +55,8 @@ export default function RootLayout({
             </Suspense>
           </ThemeWrapper>
           <HealthChecker />
-          <NotificationInit />
+          {/* <NotificationInit /> */}
+          <NotificationInitNoSSR />
         </AuthContextProvider>
       </body>
     </html>
