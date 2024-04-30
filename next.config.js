@@ -11,10 +11,10 @@ const nextPWA = require("next-pwa")({
 const nextConfig = nextPWA({
   compiler: {
     styledComponents: true,
-    removeConsole:
-      process.env.NODE_ENV === "local" || process.env.NODE_ENV === "dev"
-        ? false
-        : { exclude: ["error"] },
+    // removeConsole:
+    //   process.env.NODE_ENV === "local" || process.env.NODE_ENV === "dev"
+    //     ? false
+    //     : { exclude: ["error"] },
   },
   reactStrictMode: false,
 });
