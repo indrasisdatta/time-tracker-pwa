@@ -477,7 +477,7 @@ const TimesheetFormComponent = ({
                 )}
               </div>
               {/* Add row, save buttons starts */}
-              <div className="w-full md:w-1/2  mt-2 md:mt-0">
+              <div className="w-full md:w-1/2 ml-2 mt-2 md:mt-0">
                 <button
                   type="button"
                   // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded md:w-auto md:d-flex justify-content-right pr-3 disabled:opacity-50"

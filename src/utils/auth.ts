@@ -6,18 +6,19 @@ import { cookies } from "next/headers";
 /* Local storage key to store logged in user data */
 
 export const setLoggedinUserData = async (userObj: LoggedinUser) => {
-  return cookies().set(
+  const cookieStore = await cookies();
+  return cookieStore.set(
     process.env.NEXT_PUBLIC_USER_LS_KEY!,
     JSON.stringify(userObj)
   );
 };
 
 export const getLoggedinUserData = async () => {
-  // console.log(`Reading cookie ${USER_LS_KEY}`, cookies().get(USER_LS_KEY));
-  if (cookies().has(process.env.NEXT_PUBLIC_USER_LS_KEY!)) {
+  const cookieStore = await cookies();
+  if (cookieStore.has(process.env.NEXT_PUBLIC_USER_LS_KEY!)) {
     try {
       return JSON.parse(
-        cookies().get(process.env.NEXT_PUBLIC_USER_LS_KEY!)!.value
+        cookieStore.get(process.env.NEXT_PUBLIC_USER_LS_KEY!)!.value
       );
     } catch (e) {
       return "";
@@ -26,5 +27,6 @@ export const getLoggedinUserData = async () => {
   return "";
 };
 export const deleteLoggedinUserData = async () => {
-  return cookies().delete(process.env.NEXT_PUBLIC_USER_LS_KEY!);
+  const cookieStore = await cookies();
+  return cookieStore.delete(process.env.NEXT_PUBLIC_USER_LS_KEY!);
 };

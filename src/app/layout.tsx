@@ -12,7 +12,6 @@ import { Loader } from "./common/components/Loader";
 import { PageLoader } from "./common/components/PageLoader";
 import { AuthContextProvider } from "../context/AuthContext";
 // import { LoggedinUserData } from "@/utils/auth";
-import { redirect, useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
