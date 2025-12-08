@@ -27,6 +27,7 @@ const toastOptions = {
 export const LoginForm = () => {
   const [showForgotPwdPopup, setShowForgotPwdPopup] = useState<boolean>(false);
   const [forgotPwdEmail, setForgotPwdEmail] = useState<string>("");
+  const [isSettingCookie, setIsSettingCookie] = useState<boolean>(false);
 
   const router = useRouter();
   const useAuth = useContext(AuthContext);
@@ -63,17 +64,36 @@ export const LoginForm = () => {
     isError,
     error,
   } = useMutation(userLoginAPI, {
-    onSuccess: (userResp) => {
+    onSuccess: async (userResp) => {
       console.log("Login API Success", userResp);
       if (userResp.status == 1) {
         reset(defaultValues);
-        // toast.success(`You've logged in successfully`, toastOptions);
-        setLoggedinUserData(userResp.data);
+        // Immediate client-side state update for smooth UX
+        try {
+          const lsKey = process.env.NEXT_PUBLIC_USER_LS_KEY || "loggedinUser";
+          if (typeof window !== "undefined" && window.localStorage) {
+            window.localStorage.setItem(lsKey, JSON.stringify(userResp.data));
+          }
+        } catch (e) {
+          // ignore localStorage errors
+        }
+
+        // Update client context immediately
         useAuth.setLoggedinUser(userResp.data);
+        // Set cookie on server sofissett server-side pages can read auth immediately.
+        // Await it to ensure first-time redirect works.
+        try {
+          setIsSettingCookie(true);
+          await setLoggedinUserData(userResp.data);
+        } catch (e) {
+          // ignore
+        } finally {
+          setIsSettingCookie(false);
+        }
+
         console.log("User response set", userResp.data);
-        setTimeout(() => {
-          router.push("/calendar/timesheet");
-        }, 600);
+        // Navigate after cookie is set so server-side rendered pages see the auth
+        router.push("/calendar/timesheet");
       } else {
         toast.error(userResp?.error || "Something went wrong", toastOptions);
       }

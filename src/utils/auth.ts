@@ -7,10 +7,11 @@ import { cookies } from "next/headers";
 
 export const setLoggedinUserData = async (userObj: LoggedinUser) => {
   const cookieStore = await cookies();
-  return cookieStore.set(
+  await cookieStore.set(
     process.env.NEXT_PUBLIC_USER_LS_KEY!,
     JSON.stringify(userObj)
   );
+  return { success: true };
 };
 
 export const getLoggedinUserData = async () => {
@@ -28,5 +29,6 @@ export const getLoggedinUserData = async () => {
 };
 export const deleteLoggedinUserData = async () => {
   const cookieStore = await cookies();
-  return cookieStore.delete(process.env.NEXT_PUBLIC_USER_LS_KEY!);
+  await cookieStore.delete(process.env.NEXT_PUBLIC_USER_LS_KEY!);
+  return { success: true };
 };

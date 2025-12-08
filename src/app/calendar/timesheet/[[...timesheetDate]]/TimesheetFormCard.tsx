@@ -650,9 +650,9 @@ const TimesheetFormComponent = ({
               {/* Add row, save buttons ends */}
             </div>
             {/* Timesheet listing starts */}
-            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
               {controlledFields.map((field, index) => (
-                <li
+                <div
                   key={field.id}
                   data-testid={`li-${field.id}`}
                   className="py-3 sm:py-2"
@@ -1014,9 +1014,9 @@ const TimesheetFormComponent = ({
                       </p>
                     </div>
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
             {/* Timesheet listing ends */}
             {/* <PopupForm
               modalValues={modalValues}
